@@ -163,8 +163,9 @@ PS1='\[\033[01;34m\]\w\[\033[00m\] \[\033[01;31m\]>\[\033[00m\] '
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
-    PROMPT_COMMAND='echo -ne "\033]0;${USER}|$(pwd | sed "s|~|~|")\007"'
- 
+
+    PROMPT_COMMAND='echo -ne "\033]0;${USER}|$(pwd | sed "s|/home/achille0072|~|")\007"'
+    
     # Show the currently running command in the terminal title:
     # http://www.davidpashley.com/articles/xterm-titles-with-bash.html
     show_command_in_title_bar()
@@ -177,7 +178,8 @@ xterm*|rxvt*)
             # output them.
                 ;;
             *)
-                echo -ne "\033]0;$(pwd | sed "s|~|~|"):${BASH_COMMAND}\007"
+                echo -ne "\033]0;$(pwd | sed "s|/home/achille0072|~|"):${BASH_COMMAND}\007"
+
                 ;;
         esac
     }

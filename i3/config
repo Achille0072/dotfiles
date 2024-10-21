@@ -98,7 +98,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym ctrl+shift+Left exec playerctl previous
 bindsym ctrl+shift+Right exec playerctl next
 bindsym ctrl+shift+Up exec ~/Current_song.sh
-bindsym ctrl+shift+Space exec playerctl play-pause
+bindsym ctrl+shift+space exec playerctl play-pause
 
 # decrease screen brightness
 bindsym XF86MonBrightnessDown exec --no-startup-id "brightnessctl set 10%-"
@@ -262,7 +262,7 @@ mode "[VIM]" {
         bindsym ctrl+shift+Left exec playerctl previous
         bindsym ctrl+shift+Right exec playerctl next
         bindsym ctrl+shift+Up exec ~/Current_song.sh
-        bindsym ctrl+shift+Space exec playerctl play-pause
+        bindsym ctrl+shift+space exec playerctl play-pause
 
 
 # decrease screen brightness
@@ -366,7 +366,7 @@ mode "[VIM] Insert" {
         bindsym ctrl+shift+Left exec playerctl previous
         bindsym ctrl+shift+Right exec playerctl next
         bindsym ctrl+shift+Up exec ~/Current_song.sh
-        bindsym ctrl+shift+Space exec playerctl play-pause
+        bindsym ctrl+shift+space exec playerctl play-pause
 
 # Change brightness
 
