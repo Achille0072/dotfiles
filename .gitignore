@@ -1,0 +1,16 @@
+*
+
+!.gitignore
+!nvim
+!i3
+!i3blocks
+!i3status
+!fastfetch
+!corectrl/
+!dunst/
+!picom/
+!neofetch/
+!nitrogen/
+!rofi/
+!sway/
+!terminator/

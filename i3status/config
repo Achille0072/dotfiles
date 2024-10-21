@@ -1,0 +1,86 @@
+# per cambiare colore format = "<span color='#FF0000'>%variabile</span>"
+general {
+    colors = true
+        color_degraded = "#6495ED"
+        color_bad = "#6495ED"
+        interval = 1
+        markup = "pango"
+}
+
+order += "wireless wlp3s0"
+order += "volume volume"
+order += "read_file brightness"
+order += "battery 1"
+order += "cpu_usage"
+order += "memory"
+order += "disk /"
+order += "tztime berlin"
+order += "read_file i3_layout"
+
+wireless wlp3s0 {
+    format_up = "Wlp3s0: %essid (Q:%quality, B: %bitrate IP:%ip)"
+        format_down = "Wlp3s0: down"
+}
+
+
+battery 1 {
+    integer_battery_capacity = true
+        format = "<span foreground='#00FF55'>Battery: %percentage %remaining</span>"
+        format_down = "No Battery"
+        status_chr = "⚡ CHR"
+        status_bat = "🔋 BAT"
+        status_unk = "? UNK"
+        status_full = "☻ FULL"
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 20
+        last_full_capacity = true
+}
+
+path_exists VPN {
+# path exists when a VPN tunnel launched by nmcli/nm-applet is active
+    path = "/proc/sys/net/ipv4/conf/tun0"
+}
+
+tztime berlin {
+    format = "<span foreground='#00FF55'>%H:%M:%S %Z | %d-%m-%Y</span>"
+
+        timezone = "Europe/Berlin"
+}
+
+read_file brightness {
+    format = "Brightness: %content"
+        path = "/sys/class/backlight/amdgpu_bl1/brightness"
+}
+
+
+cpu_usage {
+    format = "CPU_Usage: %usage"
+        max_threshold = 80
+        path = "/proc/stat"
+}
+
+memory {
+    format = "MemUsed: %used"
+        threshold_degraded = "10%"
+        format_degraded = "MEM_FREE: %free"
+}
+
+disk "/" {
+    prefix_type = "decimal"
+        format = "DiskSpace: %avail"
+}
+
+read_file uptime {
+    path = "/proc/uptime"
+}
+
+volume volume {
+    format = "[Volume] ♪%volume"
+        format_muted = ""
+        mixer = "Speaker"
+}
+
+read_file i3_layout {
+    format = "i3: %content"
+        path = "/home/achille0072/current_layout"
+}
