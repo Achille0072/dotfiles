@@ -63,7 +63,7 @@ exec --no-startup-id nitrogen --restore
 exec --no-startup-id_always --no-startup-id dunst -conf ~/.config/dunst/dunstrc
 
 exec --no-startup-id_always --no-startup-id $get_layout
-exec --no-startup-id "setxkbmap -layout it"
+exec --no-startup-id "bash ~/Enable_languageswitch.sh"
 
 # Enable tap to click (touchpad) 
 exec --no-startup-id xinput set-prop "ELAN0518:00 04F3:31FC Touchpad" "libinput Tapping Enabled" 1
