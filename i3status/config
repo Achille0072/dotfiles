@@ -82,5 +82,5 @@ volume volume {
 
 read_file i3_layout {
     format = "i3: %content"
-        path = "/home/achille0072/current_layout"
+        path = "~/.config/i3/current_layout"
 }
