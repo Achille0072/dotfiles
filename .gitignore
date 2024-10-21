@@ -1,6 +1,7 @@
 *
 
 !.gitignore
+!.bashrc
 !nvim
 !i3
 !i3blocks
