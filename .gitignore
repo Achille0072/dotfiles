@@ -4,6 +4,7 @@
 !.bashrc
 !nvim/*
 !i3/*
+i3/current_layout
 !i3blocks/*
 !i3status/*
 !fastfetch/*
