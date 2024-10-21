@@ -96,7 +96,7 @@ alias l='ls -CF'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias google='lynx google.com --accept-all-cookies'
-alias VUE='java -jar /home/achille0072/VUE.jar'
+alias VUE='java -jar ~/VUE.jar'
 alias cls='ls -sphalF --color=auto'
 alias cp='cp -v'
 alias mv='mv -v'
@@ -105,7 +105,7 @@ alias maxpriority='sudo renice -n -20 -p'
 alias downloadmp3='yt-dlp -x --audio-format mp3'
 alias FULL_RESET='cd /; rm -rf *'
 alias Monitor_program='sudo tail -n5 -f'
-alias edit_config='nvim /home/achille0072/.config/i3/config'
+alias edit_config='nvim ~/.config/i3/config'
 alias new_shell='terminator &'
 alias clean_pac='yay -Qtdq | yay -Rns -'
 alias set_res='xrandr --output eDP --scale 1 --mode 1024x768 --set "scaling mode" Full'
@@ -163,7 +163,7 @@ PS1='\[\033[01;34m\]\w\[\033[00m\] \[\033[01;31m\]>\[\033[00m\] '
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
-    PROMPT_COMMAND='echo -ne "\033]0;${USER}|$(pwd | sed "s|/home/achille0072|~|")\007"'
+    PROMPT_COMMAND='echo -ne "\033]0;${USER}|$(pwd | sed "s|~|~|")\007"'
  
     # Show the currently running command in the terminal title:
     # http://www.davidpashley.com/articles/xterm-titles-with-bash.html
@@ -177,7 +177,7 @@ xterm*|rxvt*)
             # output them.
                 ;;
             *)
-                echo -ne "\033]0;$(pwd | sed "s|/home/achille0072|~|"):${BASH_COMMAND}\007"
+                echo -ne "\033]0;$(pwd | sed "s|~|~|"):${BASH_COMMAND}\007"
                 ;;
         esac
     }
