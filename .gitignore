@@ -8,6 +8,7 @@
 !i3status
 !fastfetch
 !corectrl/
+corectrl/corectrl.ini
 !dunst/
 !picom/
 !neofetch/
