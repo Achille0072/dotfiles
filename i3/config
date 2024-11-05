@@ -73,7 +73,7 @@ exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 0% && $refresh_i3statu
 exec --no-startup-id wpctl set-sink-volume @DEFAULT_SINK@ 0% && $refresh_i3status
 
 # Start the browser on startup
-exec --no-startup-id zen-browser-optimized 
+exec --no-startup-id zen-browser
 
 # Start Discord on startup
 exec --no-startup-id discord
