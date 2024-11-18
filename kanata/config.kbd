@@ -14,32 +14,36 @@
 (defalias
   ;; 1 tap : "c" key
   ;; 2 taps: Control+c
-  cc (tap-dance 200 (c C-c ))
+  cc (tap-dance 200 (c C-c (macro c c)))
 )
 
 (defalias
   ;; 1 tap : "v" key
   ;; 2 taps: Control+v
-  cv (tap-dance 200 (v C-v ))
+  cv (tap-dance 200 (v C-v (macro v v)))
 )
 
 (defalias
-  liverld (tap-hold-press 200 200 (lrld lshft))
+  liverld (tap-hold-press 200 200 lrld lshft)
 )
 
 (defalias
-  norm (tap-hold-press 200 200 ((layer-switch norm) lctl)
+  norm (tap-hold-press 200 200 (layer-switch norm) lctl)
 )
 
 (defalias
-  base (tap-hold-press 200 200 ((layer-switch base) lctl)
+  base (tap-hold-press 200 200 (layer-switch base) lctl)
+)
+
+(defalias
+  cps_esc (tap-dance 200 (caps esc))
 )
 
 (deflayer base
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10   f11  f12 prnt ins del
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ]
-  caps a    s    d    f    g    h    j    k    l    ;    '    \    ret
+@cps_esc a    s    d    f    g    h    j    k    l    ;    '    \    ret
 @liverld z    x   @cc  @cv   b    n    m    ,    .    /    rsft
   @norm lmet lalt           spc            ralt rctl
 )
