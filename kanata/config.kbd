@@ -14,13 +14,13 @@
 (defalias
   ;; 1 tap : "c" key
   ;; 2 taps: Control+c
-  cc (tap-dance 200 (c C-c (macro c c)))
+  cc (tap-dance 200 (c (macro c c) C-c))
 )
 
 (defalias
   ;; 1 tap : "v" key
   ;; 2 taps: Control+v
-  cv (tap-dance 200 (v C-v (macro v v)))
+  cv (tap-dance 200 (v (macro v v) C-v))
 )
 
 (defalias
@@ -36,7 +36,7 @@
 )
 
 (defalias
-  cps_esc (tap-dance 200 (caps esc))
+  cps_esc (tap-hold-press 200 200 (tap-dance 200 (caps esc)) lmet)
 )
 
 (deflayer base
