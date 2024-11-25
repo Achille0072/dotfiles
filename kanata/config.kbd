@@ -28,11 +28,11 @@
 )
 
 (defalias
-  norm (tap-hold-press 200 200 (layer-switch norm) lctl)
+  norm (tap-hold-press 200 200 (tap-dance 200 (lctl (layer-switch norm))) lctl)
 )
 
 (defalias
-  base (tap-hold-press 200 200 (layer-switch base) lctl)
+  base (tap-hold-press 200 200 (tap-dance 200 (lctl (layer-switch base))) lctl)
 )
 
 (defalias
@@ -42,6 +42,11 @@
 (defalias
   grv_r (tap-dance 200 (ret grv))
 )
+
+;; FUNZIONA!!!
+;; (defalias
+;;   ii (tap-dance 200 (i (tap-hold-press 200 200 j lsft) ) )
+;; )
 
 (deflayer base
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10   f11  f12 prnt ins del
