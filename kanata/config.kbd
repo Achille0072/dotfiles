@@ -53,6 +53,181 @@
 ;;   ii (tap-dance 200 (i (tap-hold-press 200 200 j (tap-hold-press 200 9000 z ret)) ) )  
 ;; )
 
+;;  (defalias
+;;  
+;;   morse
+;;      (tap-hold 200 200
+;;  		(tap-dance 200
+;;              e
+;;              (tap-hold 200 200
+;;                  (tap-dance 200
+;;                      i
+;;                      (tap-hold 200 200
+;;                          (tap-dance 200
+;;                              s
+;;                              (tap-hold 200 200
+;;                                  (tap-dance 200
+;;                                      h
+;;                                      (tap-hold 200 200
+;;                                          5
+;;                                          4
+;;                                      )
+;;                                  )
+;;                                  (tap-hold 200 200
+;;                                      v
+;;                                      3
+;;                                  )
+;;                              )
+;;                          )
+;;                          (tap-dance 200
+;;                              u
+;;                              (tap-hold 200 200
+;;                                  f
+;;                                  (tap-hold 200 200
+;;                                      (tap-dance 200
+;;                                          \ ;;ù
+;;                                          (tap-hold 200 200
+;;                                              ?
+;;                                              _
+;;                                          )
+;;                                      )
+;;                                      2
+;;                                  )
+;;                              )
+;;                          )
+;;                      )
+;;                  )
+;;                  (tap-dance 200
+;;                      a
+;;                      (tap-hold 200 200
+;;                          (tap-dance 200
+;;                              r    
+;;                              (tap-hold 200 200
+;;                                  (tap-dance 200
+;;                                      l
+;;                                      (tap-hold 200 200
+;;                                          l
+;;                                          (tap-dance 200
+;;                                              [ ;;è
+;;                                              Digit2
+;;                                          )
+;;                                      )
+;;                                  )
+;;                              )
+;;                          )
+;;  
+;;                          (tap-dance 200
+;;                              w
+;;                              (tap-hold 200 200
+;;                                  p
+;;                                  (tap-hold 200 200
+;;                                      j
+;;                                      1
+;;                                  )
+;;                              )
+;;                          )
+;;                      )
+;;                  )
+;;              )
+;;          )
+;;  
+;;          (tap-dance 200
+;;              t
+;;              (tap-hold 200 200
+;;                  (tap-dance 200
+;;                      n
+;;                      (tap-hold 200 200
+;;                          (tap-dance 200
+;;                              d
+;;                              (tap-hold 200 200
+;;                                  (tap-dance 200
+;;                                      b
+;;                                      (tap-hold 200 200
+;;                                          (tap-hold 200 200
+;;                                              6
+;;                                              -
+;;                                          )
+;;                                          =
+;;                                      )
+;;                                  )
+;;                                  (tap-dance 200
+;;                                      x
+;;                                      /
+;;                                  )
+;;                              )
+;;                          )
+;;                          (tap-dance 200
+;;                              k
+;;                              (tap-hold 200 200
+;;                                  (tap-hold 200 200
+;;                                      c
+;;                                      (tap-dance 200
+;;                                          c
+;;                                          (tap-hold 200 200
+;;                                              ;
+;;                                              !
+;;                                          )
+;;                                      )
+;;                                  )
+;;                                  (tap-dance 200 200
+;;                                      y
+;;                                      (tap-dance 200 200
+;;                                          Digit8
+;;                                          (tap-hold 2 200
+;;                                              Digit8
+;;                                              Digit9
+;;                                          )
+;;                                      )
+;;                                  )
+;;                              )
+;;                          )
+;;                      )
+;;                  )
+;;                  (tap-dance 200
+;;                      m
+;;                      (tap-hold 200 200
+;;                          (tap-dance 200
+;;                              g
+;;                              (tap-hold 200 200
+;;                                  (tap-dance 200 
+;;                                      z
+;;                                      (tap-hold 200 200
+;;                                          7
+;;                                          (tap-hold 200 200
+;;                                              7
+;;                                              ,
+;;                                          )
+;;                                      )
+;;                                  )
+;;                                  q
+;;                              )
+;;                          )
+;;                          (tap-dance 200
+;;                              o
+;;                              (tap-hold 200 200
+;;                                  (tap-dance 200
+;;                                      o
+;;                                      8
+;;                                      :
+;;                                  )
+;;                                  (tap-dance 200
+;;                                      o
+;;                                      (tap-hold 200 200
+;;                                          9
+;;                                          0
+;;                                      )
+;;                                  )
+;;                              )
+;;                          )
+;;                      )
+;;                  )
+;;              )
+;;          )
+;;  
+;;      )
+;;  
+;;  ;end
+;;  )
 (deflayer base
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10   f11  f12 prnt ins del
  @grv_r  1    2    3    4    5    6    7    8    9    0    -    =    bspc
