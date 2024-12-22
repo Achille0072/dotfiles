@@ -1,56 +1,56 @@
 (defcfg
-      process-unmapped-keys yes
+			process-unmapped-keys yes
 )
 
 (defsrc
-  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10   f11  f12 prnt ins del
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]
-  caps a    s    d    f    g    h    j    k    l    ;    '    \    ret
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lmet lalt           spc            ralt rctl
+	esc	f1	 f2	 f3	 f4	 f5	 f6	 f7	 f8	 f9	 f10	 f11	f12 prnt ins del
+	grv	1		2		3		4		5		6		7		8		9		0		-		=		bspc
+	tab	q		w		e		r		t		y		u		i		o		p		[		]
+	caps a		s		d		f		g		h		j		k		l		;		'		\		ret
+	lsft z		x		c		v		b		n		m		,		.		/		rsft
+	lctl lmet lalt					 spc						ralt rctl
 )
 
 (defalias
-  ;; 1 tap : "c" key
-  ;; 2 taps: Control+c
-  cc (tap-dance 200 (c (macro c c) C-c))
+ ;; 1 tap : "c" key
+ ;; 2 taps: Control+c
+ cc (tap-dance 200 (c (macro c c) C-c))
 )
 
 (defalias
-  ;; 1 tap : "v" key
-  ;; 2 taps: Control+v
-  cv (tap-dance 200 (v (macro v v) C-v))
+ ;; 1 tap : "v" key
+ ;; 2 taps: Control+v
+ cv (tap-dance 200 (v (macro v v) (tap-hold 200 200 C-v C-v)))
 )
 
 (defalias
-  liverld (tap-hold-press 200 200 lrld lshft)
+ liverld (tap-hold-press 200 200 ] lrld)
 )
 
 (defalias
-  norm (tap-hold-press 200 200 (tap-dance 200 (lctl (layer-switch norm))) lctl)
+ norm (tap-hold-press 200 200 (tap-dance 200 (lctl (layer-switch norm))) lctl)
 )
 
 (defalias
-  base (tap-hold-press 200 200 (tap-dance 200 (lctl (layer-switch base))) lctl)
+ base (tap-hold-press 200 200 (tap-dance 200 (lctl (layer-switch base))) lctl)
 )
 
 (defalias
-  cps_esc (tap-hold-press 200 200 (tap-dance 200 (caps esc)) lmet)
+ cps_esc (tap-hold-press 200 200 (tap-dance 200 (caps esc)) lmet)
 )
 
 (defalias
-  grv_r (tap-dance 200 (ret grv))
+ grv_r (tap-dance 200 (ret grv))
 )
 
 ;; FUNZIONA!!!
 ;; (defalias
-;;   ii (tap-dance 200 (i (tap-hold-press 200 200 j lsft) ) )
+;;	 ii (tap-dance 200 (i (tap-hold-press 200 200 j lsft) ) )
 ;; )
 
 ;; FUNZIONA!!!
-;; (defalias                                                   
-;;   ii (tap-dance 200 (i (tap-hold-press 200 200 j (tap-hold-press 200 9000 z ret)) ) )  
+;; (defalias
+;;	 ii (tap-dance 200 (i (tap-hold-press 200 200 j (tap-hold-press 200 9000 z ret)) ) )	
 ;; )
 
 ;;  (defalias
@@ -228,21 +228,23 @@
 ;;  
 ;;  ;end
 ;;  )
+
+
 (deflayer base
-  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10   f11  f12 prnt ins del
- @grv_r  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]
-@cps_esc a    s    d    f    g    h    j    k    l    ;    '    \    ret
-@liverld z    x   @cc  @cv   b    n    m    ,    .    /    rsft
-  @norm lmet lalt           spc            ralt rctl
+	esc	f1	 f2	 f3	 f4	 f5	 f6	 f7	 f8	 f9	 f10	 f11	f12 prnt ins del
+ @grv_r	1		2		3		4		5		6		7		8		9		0		-		=		bspc
+	tab	q		w		e		r		t		y		u		i		o		p		[		@liverld
+@cps_esc a		s		d		f		g		h		j		k		l		;		'		\		ret
+ lsft   z		x	 @cc	@cv	 b		n		m		,		.		/		rsft
+	@norm lmet lalt					 spc						ralt rctl
 )
 
 
 (deflayer norm
-  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10   f11  f12 prnt ins del
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]
-  caps a    s    d    f    g    h    j    k    l    ;    '    \    ret
-  lsft z    x    c    v   b    n    m    ,    .    /    rsft
-  @base lmet lalt           spc            ralt rctl
+	esc	f1	 f2	 f3	 f4	 f5	 f6	 f7	 f8	 f9	 f10	 f11	f12 prnt ins del
+	grv	1		2		3		4		5		6		7		8		9		0		-		=		bspc
+	tab	q		w		e		r		t		y		u		i		o		p		[		]
+	caps a		s		d		f		g		h		j		k		l		;		'		\		ret
+	lsft z		x		c		v	 b		n		m		,		.		/		rsft
+	@base lmet lalt					 spc						ralt rctl
 )
