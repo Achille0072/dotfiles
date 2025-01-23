@@ -12,6 +12,8 @@ set $gaps 8px
 
 set $refresh_i3status killall -SIGUSR1 i3status
 
+set $exec exec --no-startup-id
+
 #SETTINGS
 
 # Font for window titles. Will also be used by the bar unless a different font is used in the bar {} block below.
@@ -33,64 +35,64 @@ for_window [title="Bluetooth Devices"] floating enable
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
-# exec --no-startup-id dex --autostart --environment i3
+# $exec dex --autostart --environment i3
 
 
 exec "xrandr --output eDP --scale 1.2 --mode 1920x1080"
-exec --no-startup-id picom
-exec --no-startup-id corectrl
+$exec picom
+$exec corectrl
 
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+$exec xss-lock --transfer-sleep-lock -- i3lock --nofork
 #prevent screen from going black on inactivity
-exec --no-startup-id xset -dpms s off
+$exec xset -dpms s off
 
 # Low Battery Popup
-exec --no-startup-id i3-battery-popup -n -D -L 20 -l 10
+$exec i3-battery-popup -n -D -L 20 -l 10
 
 # Network manager and its applet to use the GUI from the bar
-exec --no-startup-id systemctrl start NetworkManager
-exec --no-startup-id nm-applet
+$exec systemctrl start NetworkManager
+$exec nm-applet
 
 # Bluetooth
-exec --no-startup-id blueman-applet
+$exec blueman-applet
 
 # Desktop Wallpaper
-exec --no-startup-id nitrogen --restore
+$exec nitrogen --restore
 
 # Notification Manager
-exec --no-startup-id_always --no-startup-id dunst -conf ~/.config/dunst/dunstrc
+$exec_always --no-startup-id dunst -conf ~/.config/dunst/dunstrc
 
-exec --no-startup-id_always --no-startup-id $get_layout
-exec --no-startup-id "bash ~/.config/i3/Enable_languageswitch.sh"
+$exec_always --no-startup-id $get_layout
+$exec "bash ~/.config/i3/Enable_languageswitch.sh"
 
 # Enable tap to click (touchpad) 
-exec --no-startup-id "bash ~/.config/i3/enable_touchpad.sh"
+$exec "bash ~/.config/i3/enable_touchpad.sh"
 
 # Volume at 0% on startup
-exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 0% && $refresh_i3status
-exec --no-startup-id wpctl set-sink-volume @DEFAULT_SINK@ 0% && $refresh_i3status
+$exec pactl set-sink-volume @DEFAULT_SINK@ 0% && $refresh_i3status
+$exec wpctl set-sink-volume @DEFAULT_SINK@ 0% && $refresh_i3status
 
 # Start the browser on startup
-exec --no-startup-id zen-browser
+$exec zen-browser
 
 # Start Discord on startup
-exec --no-startup-id discord
+$exec discord
 
 
 #BINDINGS
 
 # Control volume
-# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id wpctl set-volume @DEFAULT_SINK@ 5%+ && $refresh_i3status
-bindsym $mod+plus exec --no-startup-id wpctl set-volume @DEFAULT_SINK@ 5%+ && $refresh_i3status
-# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id wpctl set-volume @DEFAULT_SINK@ 5%- && $refresh_i3status
-bindsym $mod+minus exec --no-startup-id wpctl set-volume @DEFAULT_SINK@ 5%- && $refresh_i3status
+# bindsym XF86AudioRaiseVolume $exec pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioRaiseVolume $exec wpctl set-volume @DEFAULT_SINK@ 5%+ && $refresh_i3status
+bindsym $mod+plus $exec wpctl set-volume @DEFAULT_SINK@ 5%+ && $refresh_i3status
+# bindsym XF86AudioLowerVolume $exec pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
+bindsym XF86AudioLowerVolume $exec wpctl set-volume @DEFAULT_SINK@ 5%- && $refresh_i3status
+bindsym $mod+minus $exec wpctl set-volume @DEFAULT_SINK@ 5%- && $refresh_i3status
 
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86AudioMute $exec pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute $exec pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Player control
 bindsym ctrl+shift+Left exec playerctl previous
@@ -99,9 +101,9 @@ bindsym ctrl+shift+Down exec ~/.config/i3/Current_song.sh
 bindsym ctrl+shift+space exec playerctl play-pause
 
 # decrease screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id "brightnessctl set 10%-"
+bindsym XF86MonBrightnessDown $exec "brightnessctl set 10%-"
 # increase screen brightness
-bindsym XF86MonBrightnessUp exec --no-startup-id "brightnessctl set 10%+"
+bindsym XF86MonBrightnessUp $exec "brightnessctl set 10%+"
 
 # Use Mouse+$mod to drag floating windows to the wanted position
 floating_modifier $mod
@@ -116,58 +118,58 @@ bindsym $mod+p exec "flameshot gui"
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-#bindsym $mod+d exec --no-startup-id dmenu_run
+#bindsym $mod+d $exec dmenu_run
 # A more modern dmenu replacement is rofi:
 bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a .desktop file. It is a wrapper around dmenu, so you need that installed.
-#bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
+#bindcode $mod+40 $exec i3-dmenu-desktop
 
 bindsym $mod+f exec firefox
 
 # change focus
 focus_follows_mouse no
-bindsym $mod+Left focus left; exec --no-startup-id $get_layout
-bindsym $mod+Down focus down; exec --no-startup-id $get_layout
-bindsym $mod+Up focus up; exec --no-startup-id $get_layout
-bindsym $mod+Right focus right; exec --no-startup-id $get_layout
+bindsym $mod+Left focus left; $exec $get_layout
+bindsym $mod+Down focus down; $exec $get_layout
+bindsym $mod+Up focus up; $exec $get_layout
+bindsym $mod+Right focus right; $exec $get_layout
 
-bindsym $mod+l focus left; exec --no-startup-id $get_layout
-bindsym $mod+j focus down; exec --no-startup-id $get_layout
-bindsym $mod+k focus up; exec --no-startup-id $get_layout
-bindsym $mod+h focus right; exec --no-startup-id $get_layout
+bindsym $mod+l focus left; $exec $get_layout
+bindsym $mod+j focus down; $exec $get_layout
+bindsym $mod+k focus up; $exec $get_layout
+bindsym $mod+h focus right; $exec $get_layout
 
 
 # move focused window
-bindsym $mod+Shift+Left move left; exec --no-startup-id $get_layout
-bindsym $mod+Shift+Down move down; exec --no-startup-id $get_layout
-bindsym $mod+Shift+Up move up; exec --no-startup-id $get_layout
-bindsym $mod+Shift+Right move right; exec --no-startup-id $get_layout
+bindsym $mod+Shift+Left move left; $exec $get_layout
+bindsym $mod+Shift+Down move down; $exec $get_layout
+bindsym $mod+Shift+Up move up; $exec $get_layout
+bindsym $mod+Shift+Right move right; $exec $get_layout
 
-bindsym $mod+Shift+l move left; exec --no-startup-id $get_layout
-bindsym $mod+Shift+j move down; exec --no-startup-id $get_layout
-bindsym $mod+Shift+k move up; exec --no-startup-id $get_layout
-bindsym $mod+Shift+h move right; exec --no-startup-id $get_layout
+bindsym $mod+Shift+l move left; $exec $get_layout
+bindsym $mod+Shift+j move down; $exec $get_layout
+bindsym $mod+Shift+k move up; $exec $get_layout
+bindsym $mod+Shift+h move right; $exec $get_layout
 
 
 # split in horizontal orientation
-bindsym $mod+b split h; exec --no-startup-id $get_layout
+bindsym $mod+b split h; $exec $get_layout
 
 # split in vertical orientation
-bindsym $mod+v split v; exec --no-startup-id $get_layout
+bindsym $mod+v split v; $exec $get_layout
 
 # enter fullscreen mode for the focused container
-bindsym $mod+Shift+f fullscreen toggle; exec --no-startup-id $get_layout
+bindsym $mod+Shift+f fullscreen toggle; $exec $get_layout
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking; exec --no-startup-id $get_layout
-bindsym $mod+w layout tabbed; exec --no-startup-id $get_layout
-bindsym $mod+e layout toggle split; exec --no-startup-id $get_layout
+bindsym $mod+s layout stacking; $exec $get_layout
+bindsym $mod+w layout tabbed; $exec $get_layout
+bindsym $mod+e layout toggle split; $exec $get_layout
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle; exec --no-startup-id $get_layout
+bindsym $mod+Shift+space floating toggle; $exec $get_layout
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle; exec --no-startup-id $get_layout
+bindsym $mod+space focus mode_toggle; $exec $get_layout
 
 bindsym $mod+g gaps inner all set 0
 bindsym $mod+o gaps inner all set $gaps
@@ -187,49 +189,49 @@ set $ws8 "8"
 set $ws9 "9"
 
 # switch to workspace
-bindsym $mod+1 workspace number $ws1; exec --no-startup-id $get_layout
-bindsym $mod+2 workspace number $ws2; exec --no-startup-id $get_layout
-bindsym $mod+3 workspace number $ws3; exec --no-startup-id $get_layout
-bindsym $mod+4 workspace number $ws4; exec --no-startup-id $get_layout
-bindsym $mod+5 workspace number $ws5; exec --no-startup-id $get_layout
-bindsym $mod+6 workspace number $ws6; exec --no-startup-id $get_layout
-bindsym $mod+7 workspace number $ws7; exec --no-startup-id $get_layout
-bindsym $mod+8 workspace number $ws8; exec --no-startup-id $get_layout
-bindsym $mod+9 workspace number $ws9; exec --no-startup-id $get_layout
+bindsym $mod+1 workspace number $ws1; $exec $get_layout
+bindsym $mod+2 workspace number $ws2; $exec $get_layout
+bindsym $mod+3 workspace number $ws3; $exec $get_layout
+bindsym $mod+4 workspace number $ws4; $exec $get_layout
+bindsym $mod+5 workspace number $ws5; $exec $get_layout
+bindsym $mod+6 workspace number $ws6; $exec $get_layout
+bindsym $mod+7 workspace number $ws7; $exec $get_layout
+bindsym $mod+8 workspace number $ws8; $exec $get_layout
+bindsym $mod+9 workspace number $ws9; $exec $get_layout
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number $ws1; exec --no-startup-id $get_layout
-bindsym $mod+Shift+2 move container to workspace number $ws2; exec --no-startup-id $get_layout
-bindsym $mod+Shift+3 move container to workspace number $ws3; exec --no-startup-id $get_layout
-bindsym $mod+Shift+4 move container to workspace number $ws4; exec --no-startup-id $get_layout
-bindsym $mod+Shift+5 move container to workspace number $ws5; exec --no-startup-id $get_layout
-bindsym $mod+Shift+6 move container to workspace number $ws6; exec --no-startup-id $get_layout
-bindsym $mod+Shift+7 move container to workspace number $ws7; exec --no-startup-id $get_layout
-bindsym $mod+Shift+8 move container to workspace number $ws8; exec --no-startup-id $get_layout
-bindsym $mod+Shift+9 move container to workspace number $ws9; exec --no-startup-id $get_layout
+bindsym $mod+Shift+1 move container to workspace number $ws1; $exec $get_layout
+bindsym $mod+Shift+2 move container to workspace number $ws2; $exec $get_layout
+bindsym $mod+Shift+3 move container to workspace number $ws3; $exec $get_layout
+bindsym $mod+Shift+4 move container to workspace number $ws4; $exec $get_layout
+bindsym $mod+Shift+5 move container to workspace number $ws5; $exec $get_layout
+bindsym $mod+Shift+6 move container to workspace number $ws6; $exec $get_layout
+bindsym $mod+Shift+7 move container to workspace number $ws7; $exec $get_layout
+bindsym $mod+Shift+8 move container to workspace number $ws8; $exec $get_layout
+bindsym $mod+Shift+9 move container to workspace number $ws9; $exec $get_layout
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e $exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 # lock the screen
-bindsym control+mod1+l exec --no-startup-id i3lock -i ~/Pictures/black.png -e -t
+bindsym control+mod1+l $exec i3lock -i ~/Pictures/black.png -e -t
 
-bindsym $mod+c exec "gnome-calculator"; exec --no-startup-id $get_layout
+bindsym $mod+c exec "gnome-calculator"; $exec $get_layout
 
-bindsym $mod+a exec "rofi -show window -theme ~/.config/rofi/custom_win.rasi"; exec --no-startup-id $get_layout
-bindsym $mod+mod1+d mode "[VIM]"; exec --no-startup-id $get_layout
+bindsym $mod+a exec "rofi -show window -theme ~/.config/rofi/custom_win.rasi"; $exec $get_layout
+bindsym $mod+mod1+d mode "[VIM]"; $exec $get_layout
 
-bindsym $mod+n exec  thunar; exec --no-startup-id $get_layout
-bindsym $mod+t exec  gedit; exec --no-startup-id $get_layout
-bindsym $mod+u exec --no-startup-id "brightnessctl set 100%"
+bindsym $mod+n exec  thunar; $exec $get_layout
+bindsym $mod+t exec  gedit; $exec $get_layout
+bindsym $mod+u $exec "brightnessctl set 100%"
 
 # show last closed notification
 bindsym $mod+z exec "dunstctl history-pop"
 
 bindsym $mod+x exec "dunstctl close-all"
 
-bindsym $mod+r mode "resize"; exec --no-startup-id $get_layout
+bindsym $mod+r mode "resize"; $exec $get_layout
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -251,22 +253,22 @@ mode "resize" {
         bindsym Right resize grow width 10 px or 10 ppt
 
         # back to normal
-        bindsym Return mode "default"; exec --no-startup-id $get_layout
-        bindsym Escape mode "default"; exec --no-startup-id $get_layout
+        bindsym Return mode "default"; $exec $get_layout
+        bindsym Escape mode "default"; $exec $get_layout
 }
 
 
 mode "[VIM]" {
 # Control volume
-        # bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
-        bindsym XF86AudioRaiseVolume exec --no-startup-id wpctl set-volume @DEFAULT_SINK@ 5%+ && $refresh_i3status
-        bindsym plus exec --no-startup-id wpctl set-volume @DEFAULT_SINK@ 5%+ && $refresh_i3status
-        # bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
-        bindsym XF86AudioLowerVolume exec --no-startup-id wpctl set-volume @DEFAULT_SINK@ 5%- && $refresh_i3status
-        bindsym minus exec --no-startup-id wpctl set-volume @DEFAULT_SINK@ 5%- && $refresh_i3status
+        # bindsym XF86AudioRaiseVolume $exec pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+        bindsym XF86AudioRaiseVolume $exec wpctl set-volume @DEFAULT_SINK@ 5%+ && $refresh_i3status
+        bindsym plus $exec wpctl set-volume @DEFAULT_SINK@ 5%+ && $refresh_i3status
+        # bindsym XF86AudioLowerVolume $exec pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
+        bindsym XF86AudioLowerVolume $exec wpctl set-volume @DEFAULT_SINK@ 5%- && $refresh_i3status
+        bindsym minus $exec wpctl set-volume @DEFAULT_SINK@ 5%- && $refresh_i3status
 
-        bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-        bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+        bindsym XF86AudioMute $exec pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+        bindsym XF86AudioMicMute $exec pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Player control
         bindsym ctrl+shift+Left exec playerctl previous
@@ -276,74 +278,74 @@ mode "[VIM]" {
 
 
 # decrease screen brightness
-        bindsym XF86MonBrightnessDown exec --no-startup-id "brightnessctl set 3%-"
+        bindsym XF86MonBrightnessDown $exec "brightnessctl set 3%-"
 # increase screen brightness
-        bindsym XF86MonBrightnessUp exec --no-startup-id "brightnessctl set 3%+"
+        bindsym XF86MonBrightnessUp $exec "brightnessctl set 3%+"
 
         bindsym Return exec i3-sensible-terminal
 
         bindsym 0 mode "Mouse"
 # switch to workspace
-        bindsym 1 workspace number $ws1; exec --no-startup-id $get_layout
-        bindsym 2 workspace number $ws2; exec --no-startup-id $get_layout
-        bindsym 3 workspace number $ws3; exec --no-startup-id $get_layout
-        bindsym 4 workspace number $ws4; exec --no-startup-id $get_layout
-        bindsym 5 workspace number $ws5; exec --no-startup-id $get_layout
-        bindsym 6 workspace number $ws6; exec --no-startup-id $get_layout
-        bindsym 7 workspace number $ws7; exec --no-startup-id $get_layout
-        bindsym 8 workspace number $ws8; exec --no-startup-id $get_layout
-        bindsym 9 workspace number $ws9; exec --no-startup-id $get_layout
+        bindsym 1 workspace number $ws1; $exec $get_layout
+        bindsym 2 workspace number $ws2; $exec $get_layout
+        bindsym 3 workspace number $ws3; $exec $get_layout
+        bindsym 4 workspace number $ws4; $exec $get_layout
+        bindsym 5 workspace number $ws5; $exec $get_layout
+        bindsym 6 workspace number $ws6; $exec $get_layout
+        bindsym 7 workspace number $ws7; $exec $get_layout
+        bindsym 8 workspace number $ws8; $exec $get_layout
+        bindsym 9 workspace number $ws9; $exec $get_layout
 
-        bindsym a exec "rofi -show window -theme ~/.config/rofi/custom_win.rasi"; exec --no-startup-id $get_layout
+        bindsym a exec "rofi -show window -theme ~/.config/rofi/custom_win.rasi"; $exec $get_layout
 # split in horizontal orientation
-        bindsym b split h; exec --no-startup-id $get_layout
+        bindsym b split h; $exec $get_layout
         bindsym c exec "gnome-calculator"
 # open menu
-        bindsym d exec "rofi -modi drun,run -show drun"; exec --no-startup-id $get_layout
-        bindsym e layout toggle split; exec --no-startup-id $get_layout   
-        bindsym f exec firefox; exec --no-startup-id $get_layout
+        bindsym d exec "rofi -modi drun,run -show drun"; $exec $get_layout
+        bindsym e layout toggle split; $exec $get_layout   
+        bindsym f exec firefox; $exec $get_layout
         bindsym g gaps inner all set 0
 # change focus
-        bindsym h focus left; exec --no-startup-id $get_layout
+        bindsym h focus left; $exec $get_layout
         bindsym i mode "[VIM] Insert"
 # change focus
-        bindsym j focus down; exec --no-startup-id $get_layout
+        bindsym j focus down; $exec $get_layout
 # change focus
-        bindsym k focus up; exec --no-startup-id $get_layout
+        bindsym k focus up; $exec $get_layout
 # change focus
-        bindsym l focus right; exec --no-startup-id $get_layout
-        bindsym m mode "[VIM] Move"; exec --no-startup-id $get_layout
-        bindsym n exec thunar; exec --no-startup-id $get_layout
+        bindsym l focus right; $exec $get_layout
+        bindsym m mode "[VIM] Move"; $exec $get_layout
+        bindsym n exec thunar; $exec $get_layout
         bindsym o gaps inner all set $gaps
 # Take a screenshot
-        bindsym p exec "flameshot gui"; exec --no-startup-id $get_layout
+        bindsym p exec "flameshot gui"; $exec $get_layout
 # kill focused window
-        bindsym q kill; exec --no-startup-id $get_layout
-        bindsym r mode "[VIM] Resize"; exec --no-startup-id $get_layout
+        bindsym q kill; $exec $get_layout
+        bindsym r mode "[VIM] Resize"; $exec $get_layout
 # change container layout
-        bindsym s layout stacking; exec --no-startup-id $get_layout
-        bindsym t exec gedit; exec --no-startup-id $get_layout
-        bindsym u exec --no-startup-id "brightnessctl set 100%"
+        bindsym s layout stacking; $exec $get_layout
+        bindsym t exec gedit; $exec $get_layout
+        bindsym u $exec "brightnessctl set 100%"
 # split in vertical orientation
-        bindsym v split v; exec --no-startup-id $get_layout
-        bindsym w layout tabbed; exec --no-startup-id $get_layout
+        bindsym v split v; $exec $get_layout
+        bindsym w layout tabbed; $exec $get_layout
         bindsym x exec "dunstctl close-all"
 #       bindsym y
 # show last closed notification
         bindsym z exec "dunstctl history-pop"
 
 # enter fullscreen mode for the focused container
-        bindsym $mod+Shift+f fullscreen toggle; exec --no-startup-id $get_layout
+        bindsym $mod+Shift+f fullscreen toggle; $exec $get_layout
 # toggle tiling / floating
-        bindsym Shift+space floating toggle; exec --no-startup-id $get_layout
+        bindsym Shift+space floating toggle; $exec $get_layout
 # change focus between tiling / floating windows
-        bindsym mod1+space focus mode_toggle; exec --no-startup-id $get_layout
+        bindsym mod1+space focus mode_toggle; $exec $get_layout
 # reload the configuration file
         bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
         bindsym $mod+Shift+r restart
 # lock the screen
-        bindsym control+mod1+l exec --no-startup-id i3lock -i ~/Pictures/black.png -e -t
+        bindsym control+mod1+l $exec i3lock -i ~/Pictures/black.png -e -t
 
 
         bindsym $mod+mod1+d mode "default"
@@ -364,13 +366,15 @@ mode "[VIM] Insert" {
     bindsym Escape mode "[VIM]"
 
 # Control volume
-# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
-        bindsym XF86AudioRaiseVolume exec --no-startup-id wpctl set-volume @DEFAULT_SINK@ 5%+ && $refresh_i3status
-# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
-        bindsym XF86AudioLowerVolume exec --no-startup-id wpctl set-volume @DEFAULT_SINK@ 5%- && $refresh_i3status
+        # bindsym XF86AudioRaiseVolume $exec pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+        bindsym XF86AudioRaiseVolume $exec wpctl set-volume @DEFAULT_SINK@ 5%+ && $refresh_i3status
+        bindsym $mod+plus $exec wpctl set-volume @DEFAULT_SINK@ 5%+ && $refresh_i3status
+        # bindsym XF86AudioLowerVolume $exec pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
+        bindsym XF86AudioLowerVolume $exec wpctl set-volume @DEFAULT_SINK@ 5%- && $refresh_i3status
+        bindsym $mod+minus $exec wpctl set-volume @DEFAULT_SINK@ 5%- && $refresh_i3status
 
-        bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-        bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+        bindsym XF86AudioMute $exec pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+        bindsym XF86AudioMicMute $exec pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Player control
         bindsym ctrl+shift+Left exec playerctl previous
@@ -381,9 +385,9 @@ mode "[VIM] Insert" {
 # Change brightness
 
 # decrease screen brightness
-        bindsym XF86MonBrightnessDown exec --no-startup-id "brightnessctl set 3%-"
+        bindsym XF86MonBrightnessDown $exec "brightnessctl set 3%-"
 # increase screen brightness
-        bindsym XF86MonBrightnessUp exec --no-startup-id "brightnessctl set 3%+"
+        bindsym XF86MonBrightnessUp $exec "brightnessctl set 3%+"
 
 # show last closed notification
         bindsym $mod+z exec "dunstctl history-pop"
@@ -398,24 +402,24 @@ mode "[VIM] Move" {
         bindsym l move right
         bindsym h move left
 
-        bindsym b split h; exec --no-startup-id $get_layout
-        bindsym v split v; exec --no-startup-id $get_layout
+        bindsym b split h; $exec $get_layout
+        bindsym v split v; $exec $get_layout
 
 	bindsym r mode "[VIM] Resize"
 
-        bindsym 1 move container to workspace number $ws1; exec --no-startup-id $get_layout
-        bindsym 2 move container to workspace number $ws2; exec --no-startup-id $get_layout
-        bindsym 3 move container to workspace number $ws3; exec --no-startup-id $get_layout
-        bindsym 4 move container to workspace number $ws4; exec --no-startup-id $get_layout
-        bindsym 5 move container to workspace number $ws5; exec --no-startup-id $get_layout
-        bindsym 6 move container to workspace number $ws6; exec --no-startup-id $get_layout
-        bindsym 7 move container to workspace number $ws7; exec --no-startup-id $get_layout
-        bindsym 8 move container to workspace number $ws8; exec --no-startup-id $get_layout
-        bindsym 9 move container to workspace number $ws9; exec --no-startup-id $get_layout
+        bindsym 1 move container to workspace number $ws1; $exec $get_layout
+        bindsym 2 move container to workspace number $ws2; $exec $get_layout
+        bindsym 3 move container to workspace number $ws3; $exec $get_layout
+        bindsym 4 move container to workspace number $ws4; $exec $get_layout
+        bindsym 5 move container to workspace number $ws5; $exec $get_layout
+        bindsym 6 move container to workspace number $ws6; $exec $get_layout
+        bindsym 7 move container to workspace number $ws7; $exec $get_layout
+        bindsym 8 move container to workspace number $ws8; $exec $get_layout
+        bindsym 9 move container to workspace number $ws9; $exec $get_layout
 
 
-        bindsym Escape mode "[VIM]"; exec --no-startup-id $get_layout
-        bindsym Return mode "[VIM]"; exec --no-startup-id $get_layout
+        bindsym Escape mode "[VIM]"; $exec $get_layout
+        bindsym Return mode "[VIM]"; $exec $get_layout
 
 }
 
@@ -426,35 +430,35 @@ mode "Mouse" {
 
 	# Mouse movement (quick)
 
-	bindsym Left exec --no-startup-id xdotool mousemove_relative -- -$quick 0
-	bindsym Down exec --no-startup-id xdotool mousemove_relative 0 $quick
-	bindsym Up exec --no-startup-id xdotool mousemove_relative -- 0 -$quick
-	bindsym Right exec --no-startup-id xdotool mousemove_relative $quick 0
+	bindsym Left $exec xdotool mousemove_relative -- -$quick 0
+	bindsym Down $exec xdotool mousemove_relative 0 $quick
+	bindsym Up $exec xdotool mousemove_relative -- 0 -$quick
+	bindsym Right $exec xdotool mousemove_relative $quick 0
 
 	# Mouse movement (fast)
 
-	bindsym Shift+Left exec --no-startup-id xdotool mousemove_relative -- -$fast 0
-	bindsym Shift+Down exec --no-startup-id xdotool mousemove_relative 0 $fast
-	bindsym Shift+Up exec --no-startup-id xdotool mousemove_relative -- 0 -$fast
-	bindsym Shift+Right exec --no-startup-id xdotool mousemove_relative $fast 0
+	bindsym Shift+Left $exec xdotool mousemove_relative -- -$fast 0
+	bindsym Shift+Down $exec xdotool mousemove_relative 0 $fast
+	bindsym Shift+Up $exec xdotool mousemove_relative -- 0 -$fast
+	bindsym Shift+Right $exec xdotool mousemove_relative $fast 0
 
 	# Left Click
-	bindsym Return exec --no-startup-id xdotool click 1
+	bindsym Return $exec xdotool click 1
 
 	# Right Click
-	bindsym BackSpace exec --no-startup-id xdotool click 3
+	bindsym BackSpace $exec xdotool click 3
 
 	# Left Click-and-drag
-	bindsym Shift+Return exec --no-startup-id xdotool mousedown 1 -$quick
+	bindsym Shift+Return $exec xdotool mousedown 1 -$quick
 
 	# Right Click-and-drag
-	bindsym Shift+BackSpace exec --no-startup-id xdotool mousedown 3 -$quick
+	bindsym Shift+BackSpace $exec xdotool mousedown 3 -$quick
 
 	# Left Drag release
-	bindsym $mod+Return exec --no-startup-id xdotool mouseup 1
+	bindsym $mod+Return $exec xdotool mouseup 1
 
 	# Right Drag release
-	bindsym $mod+BackSpace exec --no-startup-id xdotool mouseup 3
+	bindsym $mod+BackSpace $exec xdotool mouseup 3
 
 
 	# return to normal keybindings
