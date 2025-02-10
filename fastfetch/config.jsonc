@@ -19,6 +19,11 @@
     "swap",
     "disk",
     "battery",
+    {
+        "type": "custom",
+        "key": "Amore",
+        "format": "Sam <3"
+    },
     "break",
     "colors"
   ]

@@ -223,7 +223,7 @@ bindsym $mod+a exec "rofi -show window -theme ~/.config/rofi/custom_win.rasi"; $
 bindsym $mod+mod1+d mode "[VIM]"; $exec $get_layout
 
 bindsym $mod+n exec  thunar; $exec $get_layout
-bindsym $mod+t exec  gedit; $exec $get_layout
+bindsym $mod+t exec  mousepad; $exec $get_layout
 bindsym $mod+u $exec "brightnessctl set 100%"
 
 # show last closed notification
@@ -324,7 +324,7 @@ mode "[VIM]" {
         bindsym r mode "[VIM] Resize"; $exec $get_layout
 # change container layout
         bindsym s layout stacking; $exec $get_layout
-        bindsym t exec gedit; $exec $get_layout
+        bindsym t exec mousepad; $exec $get_layout
         bindsym u $exec "brightnessctl set 100%"
 # split in vertical orientation
         bindsym v split v; $exec $get_layout
