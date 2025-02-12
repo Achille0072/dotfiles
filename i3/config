@@ -145,6 +145,9 @@ bindsym $mod+Shift+Down move down; $exec $get_layout
 bindsym $mod+Shift+Up move up; $exec $get_layout
 bindsym $mod+Shift+Right move right; $exec $get_layout
 
+bindsym $mod+Shift+Ctrl+Left move workspace to output left; $exec $get_layout
+bindsym $mod+Shift+Ctrl+Right move workspace to output right; $exec $get_layout
+
 bindsym $mod+Shift+l move left; $exec $get_layout
 bindsym $mod+Shift+j move down; $exec $get_layout
 bindsym $mod+Shift+k move up; $exec $get_layout
@@ -401,6 +404,9 @@ mode "[VIM] Move" {
         bindsym j move down
         bindsym l move right
         bindsym h move left
+
+        bindsym Shift+l move workspace to output right
+        bindsym Shift+h move workspace to output left
 
         bindsym b split h; $exec $get_layout
         bindsym v split v; $exec $get_layout
