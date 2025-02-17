@@ -60,9 +60,9 @@ cpu_usage {
 }
 
 memory {
-    format = "MemUsed: %used"
+    format = "MemUsed: %used/%total (%percentage_used)"
         threshold_degraded = "10%"
-        format_degraded = "MEM_FREE: %free"
+        format_degraded = "MEM_FREE: %free (%percentage_free)"
 }
 
 disk "/" {
