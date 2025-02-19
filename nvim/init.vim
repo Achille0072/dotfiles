@@ -23,7 +23,7 @@ set colorcolumn=0
 
 set virtualedit=block
 
-set makeprg=./build.sh
+set makeprg=cd\ ..\ &&\ make
 
 map <silent> <F2> :set rnu! <CR>" toggle relative numbers 
 map <silent> <F3> :nohls <CR>
