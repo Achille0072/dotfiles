@@ -133,10 +133,10 @@ bindsym $mod+Down focus down; $exec $get_layout
 bindsym $mod+Up focus up; $exec $get_layout
 bindsym $mod+Right focus right; $exec $get_layout
 
-bindsym $mod+l focus left; $exec $get_layout
+bindsym $mod+l focus right; $exec $get_layout
 bindsym $mod+j focus down; $exec $get_layout
 bindsym $mod+k focus up; $exec $get_layout
-bindsym $mod+h focus right; $exec $get_layout
+bindsym $mod+h focus left; $exec $get_layout
 
 
 # move focused window
