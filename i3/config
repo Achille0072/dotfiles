@@ -411,7 +411,7 @@ mode "[VIM] Move" {
         bindsym b split h; $exec $get_layout
         bindsym v split v; $exec $get_layout
 
-	bindsym r mode "[VIM] Resize"
+        bindsym r mode "[VIM] Resize"
 
         bindsym 1 move container to workspace number $ws1; $exec $get_layout
         bindsym 2 move container to workspace number $ws2; $exec $get_layout
@@ -422,6 +422,16 @@ mode "[VIM] Move" {
         bindsym 7 move container to workspace number $ws7; $exec $get_layout
         bindsym 8 move container to workspace number $ws8; $exec $get_layout
         bindsym 9 move container to workspace number $ws9; $exec $get_layout
+
+        bindsym Shift+1 move container to workspace number $ws1; workspace number $ws1; $exec $get_layout
+        bindsym Shift+2 move container to workspace number $ws2; workspace number $ws2; $exec $get_layout
+        bindsym Shift+3 move container to workspace number $ws3; workspace number $ws3; $exec $get_layout
+        bindsym Shift+4 move container to workspace number $ws4; workspace number $ws4; $exec $get_layout
+        bindsym Shift+5 move container to workspace number $ws5; workspace number $ws5; $exec $get_layout
+        bindsym Shift+6 move container to workspace number $ws6; workspace number $ws6; $exec $get_layout
+        bindsym Shift+7 move container to workspace number $ws7; workspace number $ws7; $exec $get_layout
+        bindsym Shift+8 move container to workspace number $ws8; workspace number $ws8; $exec $get_layout
+        bindsym Shift+9 move container to workspace number $ws9; workspace number $ws9; $exec $get_layout
 
 
         bindsym Escape mode "[VIM]"; $exec $get_layout
