@@ -56,7 +56,7 @@ $exec systemctrl start NetworkManager
 $exec nm-applet
 
 # Bluetooth
-$exec blueman-applet
+#$exec blueman-applet
 
 # Desktop Wallpaper
 $exec nitrogen --restore
@@ -78,7 +78,7 @@ $exec wpctl set-sink-volume @DEFAULT_SINK@ 0% && $refresh_i3status
 $exec zen-browser
 
 # Start Discord on startup
-$exec discord
+$exec vesktop
 
 
 #BINDINGS

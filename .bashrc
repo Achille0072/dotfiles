@@ -159,8 +159,6 @@ fastfetch
 
 PS1='\[\033[01;34m\]\w\[\033[00m\] \[\033[01;31m\]>\[\033[00m\] '
 
-
-
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
