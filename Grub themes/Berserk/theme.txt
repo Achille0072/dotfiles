@@ -1,0 +1,47 @@
+#general settings
+message-font: "CC Wild Words Regular 20"
+message-color: "#000"
+message-bg-color: "#fff"
+terminal-box: "terminal_box_*.png"
+terminal-font: "DejaVu Sans Regular 12"
+desktop-image: "berserk.png"
+
+#help bar at the bottom
++ label {
+	top = 100%-25
+	left = 0
+	width = 100%
+	height = 20
+	text = "@KEYMAP_MIDDLE@"
+	align = "center"
+	font = "DejaVu Sans Regular 10"
+	color = "#FFF"
+}
+
+#boot menu
++ boot_menu {
+	left = 10%
+	width = 35%
+	top = 30%
+	height = 50%	
+	item_font = "CC Wild Words Regular 20"
+	item_color = "#FFF"
+	selected_item_font = "CC Wild Words Bold 20"
+	selected_item_color= "#F00"
+	selected_item_pixmap_style = "select_*.png"
+}
+
+#progress bar
++ progress_bar {
+	id = "__timeout__"
+	left = 15%
+	top = 80%
+	height = 20
+	width = 70%
+	font = "DejaVu Sans Regular 12"
+	text_color = "#F00"
+	fg_color = "#fff"
+	bg_color = "#000"
+	border_color = "#fff"
+	text = "@TIMEOUT_NOTIFICATION_LONG@"
+}
