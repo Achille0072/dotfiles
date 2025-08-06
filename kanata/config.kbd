@@ -28,11 +28,11 @@
 )
 
 (defalias
- norm (tap-hold-press 200 200 (tap-dance 200 (lctl (layer-switch norm))) lctl)
+ norm (tap-hold-press 200 200 (tap-dance 200 (lalt (layer-switch norm))) lalt)
 )
 
 (defalias
- base (tap-hold-press 200 200 (tap-dance 200 (lctl (layer-switch base))) lctl)
+ base (tap-hold-press 200 200 (tap-dance 200 (lalt (layer-switch base))) lalt)
 )
 
 (defalias
@@ -50,7 +50,7 @@
 	tab	q		w		e		r		t		y		u		i		o		p		@liverld		]
 @cps_esc a		s		d		f		g		h		j		k		l		;		'		\		ret
  lsft   z		x	 @cc	@cv	 b		n		m		,		.		/		rsft
-	@norm lmet lalt					 spc						ralt rctl
+ lctl	lmet @norm 					 spc						ralt rctl
 )
 
 
@@ -60,7 +60,7 @@
 	tab	q		w		e		r		t		y		u		i		o		p		[		]
 	caps a		s		d		f		g		h		j		k		l		;		'		\		ret
 	lsft z		x		c		v	 b		n		m		,		.		/		rsft
-	@base lmet lalt					 spc						ralt rctl
+	lctl lmet @base					 spc						ralt rctl
 )
 
 
