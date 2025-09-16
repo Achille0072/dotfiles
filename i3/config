@@ -80,6 +80,9 @@ $exec zen-browser
 # Start Discord on startup
 $exec vesktop
 
+# start searxng container
+$exec ~/.config/searxng/run.sh
+
 
 #BINDINGS
 
@@ -148,10 +151,10 @@ bindsym $mod+Shift+Right move right; $exec $get_layout
 bindsym $mod+Shift+Ctrl+Left move workspace to output left; $exec $get_layout
 bindsym $mod+Shift+Ctrl+Right move workspace to output right; $exec $get_layout
 
-bindsym $mod+Shift+l move left; $exec $get_layout
+bindsym $mod+Shift+l move right; $exec $get_layout
 bindsym $mod+Shift+j move down; $exec $get_layout
 bindsym $mod+Shift+k move up; $exec $get_layout
-bindsym $mod+Shift+h move right; $exec $get_layout
+bindsym $mod+Shift+h move left; $exec $get_layout
 
 
 # split in horizontal orientation
