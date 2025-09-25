@@ -7,4 +7,4 @@ services:
         volumes:
             - ./config/:/etc/searxng/
             - ./data/:/var/cache/searxng/
-        image: docker.io/searxng/searxng:latest
+        image: ghcr.io/searxng/searxng:latest
