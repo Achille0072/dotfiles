@@ -1,0 +1,111 @@
+# start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
+
+# Take a screenshot
+bindsym $mod+p exec "flameshot gui"
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start dmenu (a program launcher)
+#bindsym $mod+d $exec dmenu_run
+# A more modern dmenu replacement is rofi:
+bindcode $mod+40 exec "rofi -modi drun,run -show drun"
+# There also is i3-dmenu-desktop which only displays applications shipping a .desktop file. It is a wrapper around dmenu, so you need that installed.
+#bindcode $mod+40 $exec i3-dmenu-desktop
+
+bindsym $mod+f exec firefox
+
+# change focus
+bindsym $mod+Left focus left; $exec $get_layout
+bindsym $mod+Down focus down; $exec $get_layout
+bindsym $mod+Up focus up; $exec $get_layout
+bindsym $mod+Right focus right; $exec $get_layout
+
+bindsym $mod+l focus right; $exec $get_layout
+bindsym $mod+j focus down; $exec $get_layout
+bindsym $mod+k focus up; $exec $get_layout
+bindsym $mod+h focus left; $exec $get_layout
+
+
+# move focused window
+bindsym $mod+Shift+Left move left; $exec $get_layout
+bindsym $mod+Shift+Down move down; $exec $get_layout
+bindsym $mod+Shift+Up move up; $exec $get_layout
+bindsym $mod+Shift+Right move right; $exec $get_layout
+
+bindsym $mod+Shift+Ctrl+Left move workspace to output left; $exec $get_layout
+bindsym $mod+Shift+Ctrl+Right move workspace to output right; $exec $get_layout
+
+bindsym $mod+Shift+l move right; $exec $get_layout
+bindsym $mod+Shift+j move down; $exec $get_layout
+bindsym $mod+Shift+k move up; $exec $get_layout
+bindsym $mod+Shift+h move left; $exec $get_layout
+
+
+# split in horizontal orientation
+bindsym $mod+b split h; $exec $get_layout
+
+# split in vertical orientation
+bindsym $mod+v split v; $exec $get_layout
+
+# enter fullscreen mode for the focused container
+bindsym $mod+Shift+f fullscreen toggle; $exec $get_layout
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking; $exec $get_layout
+bindsym $mod+w layout tabbed; $exec $get_layout
+bindsym $mod+e layout toggle split; $exec $get_layout
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle; $exec $get_layout
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle; $exec $get_layout
+
+bindsym $mod+g gaps inner all set 0
+bindsym $mod+o gaps inner all set $gaps
+
+# switch to workspace
+bindsym $mod+1 workspace number $ws1; $exec $get_layout
+bindsym $mod+2 workspace number $ws2; $exec $get_layout
+bindsym $mod+3 workspace number $ws3; $exec $get_layout
+bindsym $mod+4 workspace number $ws4; $exec $get_layout
+bindsym $mod+5 workspace number $ws5; $exec $get_layout
+bindsym $mod+6 workspace number $ws6; $exec $get_layout
+bindsym $mod+7 workspace number $ws7; $exec $get_layout
+bindsym $mod+8 workspace number $ws8; $exec $get_layout
+bindsym $mod+9 workspace number $ws9; $exec $get_layout
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1; $exec $get_layout
+bindsym $mod+Shift+2 move container to workspace number $ws2; $exec $get_layout
+bindsym $mod+Shift+3 move container to workspace number $ws3; $exec $get_layout
+bindsym $mod+Shift+4 move container to workspace number $ws4; $exec $get_layout
+bindsym $mod+Shift+5 move container to workspace number $ws5; $exec $get_layout
+bindsym $mod+Shift+6 move container to workspace number $ws6; $exec $get_layout
+bindsym $mod+Shift+7 move container to workspace number $ws7; $exec $get_layout
+bindsym $mod+Shift+8 move container to workspace number $ws8; $exec $get_layout
+bindsym $mod+Shift+9 move container to workspace number $ws9; $exec $get_layout
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r ~/.config/i3/compile_i3; restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e $exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# lock the screen
+bindsym control+mod1+l $exec i3lock -i ~/Pictures/black.png -e -t
+
+bindsym $mod+c exec "gnome-calculator"; $exec $get_layout
+
+bindsym $mod+a exec "rofi -show window -theme ~/.config/rofi/custom_win.rasi"; $exec $get_layout
+bindsym $mod+mod1+d mode "[VIM]"; $exec $get_layout
+
+bindsym $mod+n exec  thunar; $exec $get_layout
+bindsym $mod+t exec  mousepad; $exec $get_layout
+bindsym $mod+u $exec "brightnessctl set 100%"
+
+# show last closed notification
+bindsym $mod+z exec "dunstctl history-pop"
+
+bindsym $mod+x exec "dunstctl close-all"
+
