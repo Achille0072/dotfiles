@@ -141,6 +141,9 @@ mode "[VIM]" {
 
         bindsym Return exec i3-sensible-terminal
 
+        bindsym plus $exec wpctl set-volume @DEFAULT_SINK@ 5%+ && $refresh_i3status
+        bindsym minus $exec wpctl set-volume @DEFAULT_SINK@ 5%- && $refresh_i3status
+
         bindsym 0 mode "Mouse"
 # switch to workspace
         bindsym 1 workspace number $ws1; $exec $get_layout
