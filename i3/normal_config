@@ -98,7 +98,6 @@ bindsym control+mod1+l $exec i3lock -i ~/Pictures/black.png -e -t
 bindsym $mod+c exec "gnome-calculator"; $exec $get_layout
 
 bindsym $mod+a exec "rofi -show window -theme ~/.config/rofi/custom_win.rasi"; $exec $get_layout
-bindsym $mod+mod1+d mode "[VIM]"; $exec $get_layout
 
 bindsym $mod+n exec  thunar; $exec $get_layout
 bindsym $mod+t exec  mousepad; $exec $get_layout

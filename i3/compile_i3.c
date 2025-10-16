@@ -19,14 +19,14 @@ int main (int argc, char* argv[])
     FILE* f = fopen("config_seed", "r");
     if(f == NULL)
     {
-        fprintf(stderr, "Could not open config file \n");
+        fprintf(stderr, "Could not open config_seed file \n");
         exit(1);
     }
 
-    FILE* temp = fopen("temp", "w");
-    if(temp == NULL)
+    FILE* config = fopen("config", "w");
+    if(config == NULL)
     {
-        fprintf(stderr, "Could not create temp file \n");
+        fprintf(stderr, "Could not create config file \n");
         exit(1);
     }
 
@@ -57,23 +57,14 @@ int main (int argc, char* argv[])
                     fprintf(stderr, "Could not open included file %s\n", path);
                     exit(1);
                 }
-                while(getline(&buffer, &bufsize, included) != -1) fprintf(temp, "%s", buffer);
+                while(getline(&buffer, &bufsize, included) != -1) fprintf(config, "%s", buffer);
                 fclose(included);
             }
-        } else fprintf(temp, "%s", buffer);
+        } else fprintf(config, "%s", buffer);
     }
 
-    fclose(f);
-    fclose(temp);
-    f = fopen("config", "w");
-    temp = fopen("temp", "r");
-    while(getline(&buffer, &bufsize, temp) != EOF)
-        fprintf(f, "%s", buffer);
-
-
 free(buffer);
-fclose(temp);
-remove("temp");
+fclose(config);
 fclose(f);
 return 0;
 }
