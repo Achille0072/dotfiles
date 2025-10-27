@@ -16,19 +16,26 @@ int compare (char* string, char* find, int start, int end)
 
 int main (int argc, char* argv[])
 {
-    FILE* f = fopen("config_seed", "r");
+    FILE* f = fopen(argv[1], "r");
     if(f == NULL)
     {
         fprintf(stderr, "Could not open config_seed file \n");
         exit(1);
     }
 
-    FILE* config = fopen("config", "w");
+    char* home = getenv("HOME");
+    char* config_path = malloc((strlen(home) + 1) * sizeof(char));
+    config_path = strcpy(config_path, home);
+    config_path = realloc(config_path, (strlen(config_path) + strlen("/.config/i3/") + 1) * sizeof(char));
+    config_path = strcat(config_path, "/.config/i3/");
+
+    FILE* config = fopen(strcat(config_path, "config"), "w");
     if(config == NULL)
     {
         fprintf(stderr, "Could not create config file \n");
         exit(1);
     }
+    config_path[strlen(config_path) - strlen("config")] = '\0';
 
     size_t bufsize = 1;
     char* buffer = malloc(bufsize * sizeof(char));
@@ -51,12 +58,15 @@ int main (int argc, char* argv[])
                     }
                     path = realloc(path, (i + 1 - ignored) * sizeof(char));
                 }
-                FILE* included = fopen(path, "r");
+
+                config_path = realloc(config_path, (strlen(config_path) + strlen(path) + 1) * sizeof(char));
+                FILE* included = fopen(strcat(config_path, path), "r");
                 if(included == NULL)
                 {
-                    fprintf(stderr, "Could not open included file %s\n", path);
+                    fprintf(stderr, "Could not open included file %s\n", config_path);
                     exit(1);
                 }
+                config_path[strlen(config_path) - strlen(path)] = '\0';
                 while(getline(&buffer, &bufsize, included) != -1) fprintf(config, "%s", buffer);
                 fclose(included);
             }
@@ -64,6 +74,7 @@ int main (int argc, char* argv[])
     }
 
 free(buffer);
+free(config_path);
 fclose(config);
 fclose(f);
 return 0;

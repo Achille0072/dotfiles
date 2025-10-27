@@ -95,9 +95,6 @@ $exec wpctl set-sink-volume @DEFAULT_SINK@ 0% && $refresh_i3status
 # Start the browser on startup
 $exec zen-browser
 
-# Start Discord on startup
-$exec vesktop
-
 # start searxng container
 $exec ~/.config/searxng/run.sh
 
