@@ -58,17 +58,32 @@ int main (int argc, char* argv[])
                     }
                     path = realloc(path, (i + 1 - ignored) * sizeof(char));
                 }
-
-                config_path = realloc(config_path, (strlen(config_path) + strlen(path) + 1) * sizeof(char));
-                FILE* included = fopen(strcat(config_path, path), "r");
+                char* included_path = malloc( (strlen(path) + 1) * sizeof(char) );
+                switch (path[0])
+                {
+                    case '/':
+                        included_path = strcpy(included_path, path);
+                        break;
+                    case '~':
+                        included_path = realloc(included_path, (strlen(home) + strlen(path) + 1) * sizeof(char) );
+                        included_path = strcpy(included_path, home);
+                        included_path = strcat(included_path, &path[1]);
+                        break;
+                    default:
+                        included_path = realloc(included_path, (strlen(config_path) + strlen(path) + 1) * sizeof(char) );
+                        included_path = strcpy(included_path, config_path);
+                        included_path = strcat(included_path, path);
+                        break;
+                }
+                FILE* included = fopen(included_path, "r");
                 if(included == NULL)
                 {
                     fprintf(stderr, "Could not open included file %s\n", config_path);
                     exit(1);
                 }
-                config_path[strlen(config_path) - strlen(path)] = '\0';
                 while(getline(&buffer, &bufsize, included) != -1) fprintf(config, "%s", buffer);
                 fclose(included);
+                free(included_path);
             }
         } else fprintf(config, "%s", buffer);
     }
