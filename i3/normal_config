@@ -108,3 +108,5 @@ bindsym $mod+z exec "dunstctl history-pop"
 
 bindsym $mod+x exec "dunstctl close-all"
 
+bindsym $mod+y exec ~/.config/i3/Get_date_battery.sh
+

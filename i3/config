@@ -233,6 +233,8 @@ bindsym $mod+z exec "dunstctl history-pop"
 
 bindsym $mod+x exec "dunstctl close-all"
 
+bindsym $mod+y exec ~/.config/i3/Get_date_battery.sh
+
 
 bindsym $mod+mod1+d mode "[VIM]"; $exec $get_layout
 bindsym $mod+r mode "resize"; $exec $get_layout
@@ -396,6 +398,8 @@ bindsym $mod+z exec "dunstctl history-pop"
 
 bindsym $mod+x exec "dunstctl close-all"
 
+bindsym $mod+y exec ~/.config/i3/Get_date_battery.sh
+
 
         bindsym Return exec i3-sensible-terminal
 
@@ -448,7 +452,7 @@ bindsym $mod+x exec "dunstctl close-all"
         bindsym v split v; $exec $get_layout
         bindsym w layout tabbed; $exec $get_layout
         bindsym x exec "dunstctl close-all"
-#       bindsym y
+        bindsym y exec ~/.config/i3/Get_date_battery.sh
 # show last closed notification
         bindsym z exec "dunstctl history-pop"
 
@@ -600,6 +604,8 @@ bindsym $mod+u $exec "brightnessctl set 100%"
 bindsym $mod+z exec "dunstctl history-pop"
 
 bindsym $mod+x exec "dunstctl close-all"
+
+bindsym $mod+y exec ~/.config/i3/Get_date_battery.sh
 
 
 }

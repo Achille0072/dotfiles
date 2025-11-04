@@ -188,7 +188,7 @@ mode "[VIM]" {
         bindsym v split v; $exec $get_layout
         bindsym w layout tabbed; $exec $get_layout
         bindsym x exec "dunstctl close-all"
-#       bindsym y
+        bindsym y exec ~/.config/i3/Get_date_battery.sh
 # show last closed notification
         bindsym z exec "dunstctl history-pop"
 
